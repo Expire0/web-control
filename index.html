@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- 3 Meta Tags Must Go Before All Else in <head> -->
+
+      <title>raspi remote tool </title>
+
+      <!-- Bootstrap CSS -->
+       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" 
+      integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"> 
+
+   </head>
+   
+   <body>
+     <div class="container">
+    <div class="row">
+  <div class="col-md-9 centered">
+
+       <h2>raspi remote  Tool</h2>
+            <p class="lead">Tool remotely controlling a server / raspi</p>
+
+
+ <!-- Tabs begin-->
+ <ul class="nav nav-tabs">  <!-- tab config -->
+  <li class="nav-item" ><a class="nav-link active" href="#home"  data-toggle="tab">Home</a></li>
+  <li class="nav-item" ><a class="nav-link" href="#cosmas"  data-toggle="tab">tools</a></li>
+  <li class="nav-item" ><a class="nav-link" href="#batch"  data-toggle="tab" >run process</a></li>
+</ul>  <!-- tab config end --> 
+
+<!-- tab content -->
+<div class="tab-content">
+ <div role="tabpanel" class="tab-pane fade in active"  id="home"> 
+
+<div class="container">
+<div class="col-md-8"> 
+<div class="row">
+
+<!-- began home -->
+         <h3> Use for batches less than 300 </h3>
+            <form class="horizontal-form" method="post" action="/cgi-bin/cdv_only-mas-csa.pl" enctype="multipart/form-data">
+               <fieldset>
+                     <div class="form-group">
+                        <p> <b>  RDU Selection: </b> <p>
+                        <div class="checkbox" id="rducks">
+                           <label for="rdu"><input type="radio" name="rd" id="rd" value="rd1">A</label>
+                           <label for="rdu"><input type="radio" name="rd" id="rd" value="rd2">B</label>
+                     </div>   </div>
+
+ <div class="input-group">
+                        <label class="control-label" for="data">MAC Addresses:</label>
+                        <textarea class="form-control" name="data" id="data" rows="10" placeholder="Format: xx:xx:xx:xx:xx:xx" ></textarea>
+
+                     <div class="form-group ">
+                        <label class="control-label" for="cos">Service Request:</label>
+                        <select class="form-control" name="cos" id="cos">
+                           <option value="getDetails">gets</option>
+                           <optgroup label="Set Class Of Services:">
+                              <option value="abusesuspend">suspend</option>
+                              <option value="abuseterminate">terminate</option>
+                              <option value="abusedead">dead</option>
+                           </optgroup>
+                        </select>
+                     </div>
+
+
+                     <!-- Credentials -->
+                     <div class="form-group">
+                    <!--    <label class="control-label" for="who">CNR Username:</label>
+                        <input name="who" id="who" type="text" placeholder="Required!" class="form-control" required> -->
+
+<!-- Upload Function -->
+                     <label class="control-label" for="custom"> Beta</label>
+                     cccccccccccccccccc
+                    <input type="file" name="kiwi" id="custom"  />
+
+                     </div><!--/form-group-->
+
+                     <!-- Buttonz -->
+                     <div class="form-group">
+                        <button id="Submit" type="submit" class="btn btn-success">Submit</button>
+                        <button id="Clear" type="reset" class="btn btn-warning">Clear</button>
+                        <a href="mailto:CNOC_IPEDGE_NatlProv@comcast.com?subject=CSA%20Tool%20Issue"
+                        id="Help" class="btn btn-danger" role="button">Help!</a>
+ </div>
+ </fieldset>
+            </form>
+</div>
+</div>
+</div>
+</div>   <!-- end home --> 
+
+
+
+ <div role="tabpanel" class="tab-pane fade" id="cosmas">
+<!-- began cos lookup --> 
+
+
+<h3> Helper</h3>
+            
+            <p class="lead tab-pane" id="2">blah.</p>
+            <form class="form-inline" action="../cgi-bin/testpy.py" method="GET" target="_blank">
+                <fieldset>
+                    <div class="form-group">
+                        <label class="control-label" for="mas">Model Type:</label>
+                        <input type="text" name="mas" id="mas" placeholder="e.g. 'xj67676'">
+                    </div><!--/form-group-->
+
+                    <div class="form-group">
+                        <label class="control-label" for="mas1">Service Type:</label>
+                        <input type="text" name="mas1" id="mas1" placeholder="e.g. 'web design'">
+                    </div><!--/form-group-->
+
+                    <div class="form-group">
+                        <button id="Submit" type="submit" class="btn btn-success">Lookup</button>
+                    </div><!--/form-group-->
+                </fieldset>
+            </form>
+
+
+
+</div> <!-- end cos lookup --> 
+
+
+
+
+<div role="tabpanel" class="tab-pane fade" id="batch">
+<!-- began batch tool --> 
+
+<div class="container">
+<div class="row">
+<div class="col-md-8">
+<p>
+  <img class="mas1" src="http://www.thestorageguy-madison.com/media/1305/work-with-multiple-files.png">
+The tool is used for background batch processing
+</p>
+
+
+<form class="form-inline" action="../../../../cgi-bin/run_background.py" method="POST" target="_blank">
+<div class="input-group checkbox">
+<label> <input type=radio name="rd" >All(beta)</label>
+<label><input type=radio name="rd" >sel1 </label>
+<label><input type=radio name="rd">sel1 </label>
+<label><input type=radio name="rd">sel3 </label>
+<label><input type=radio name="rd">sel4 </label>
+</div>
+<div>
+<div class="form-group">
+                        <label class="control-label" for="checking"> Type:</label>
+                        <input type="text" name="checking">
+                       <button id="Submit" type="submit" class="btn btn-success">beta</button>
+                    </div><!--/form-group-->
+  <input stly="margin-bottom:30px;" type="file" id="fileinput" />
+</form>
+</div>
+</div>
+
+<form class="form-inline" action="../../../../cgi-bin/check_process.py" method="POST" target="_blank">
+<div class="form-group">
+<div class="row" style="margin-top:10px;">
+<div class="col-md-5">
+
+  <button id="submit" type="submit" class="btn btn-warning"> check progress  </button> </form> </div>
+
+</div>
+</div>
+
+<div class="row" style="margin-top:10px;">
+<div class="col-md-5">
+
+<form class="form-inline" action="../../../../cgi-bin/check_log.py" method="POST" target="_blank">
+
+<div class="form-group">
+                        <label class="control-label" for="checking">Log file retrieval:</label>
+                        <input type="text" name="log">
+                       <button id="Submit" type="submit" class="btn btn-success">beta</button>
+                    </div><!--/form-group-->
+
+</form>
+
+</div>
+</div>
+
+
+
+
+</div>  <!-- end batch tool --> 
+
+
+</div>
+</div>
+</div>
+ <footer>
+         <hr>
+         <div class="col-md-10 col-md-offset-2">
+            <p>&copy; 2017 </p>
+         </div><!--/col-md-10 col-md-offset-3-->
+      </footer>
+
+ <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+   </body>
+
+</html>
+

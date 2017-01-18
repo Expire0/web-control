@@ -1,0 +1,61 @@
+#!/usr/bin/python3
+
+### run a backgroup process and send the stout to a file.   Use the file for a status update and delete 
+### http://stackoverflow.com/questions/1996518/retrieving-the-output-of-subprocess-call
+
+# set html environment ##
+
+import cgi,cgitb
+import sys
+from subprocess  import Popen, PIPE
+import sys
+from check_background  import is_running
+cgitb.enable()  #enable cgi debug 
+
+
+print ("Content-Type: text/html; charset=utf-8\n\n");
+#mas = input("Enter model: ")
+#mas1 = input("Service Type: ")
+
+form = cgi.FieldStorage()
+mas =form.getvalue("checking")
+mas1 = str(mas)
+
+
+
+#print "Content-type:text/html\r\n\r\n"
+print ("<html>")
+print ("<head>")
+#print "<title>COS lookup </title>"
+print ("</head>")
+print ("<body>")
+print ("Found the below class of services<br>")
+#print "<h2>Hello %s %s</h2>" % (mas, mas1)
+print ("</body>")
+print ("</html>")
+
+
+
+# end html environment ##
+
+arg1 = "+%m-%Y"
+
+#os.unlink("check")
+
+## run background process
+
+code= Popen([mas1, arg1 ],stdout=PIPE, stderr=PIPE)
+while True:
+    line = code.stdout.readline().decode('utf-8')
+    file = open('../html/log/check.txt','w+')
+
+    if "2017" in line:
+        file.write(line)
+        print("Batch received\n")
+        print("Your log file is " + line)
+    break
+file.close()
+## check if process is running
+#code= subprocess.call(["tail -f check "],shell=True)
+print(mas1)
+is_running(b"run.sh")
